@@ -6,7 +6,7 @@ import plotly.express as px
 st.set_page_config(
     page_title="Kalkulator Jejak Karbon (Slider Mode)",
     page_icon="🎚️",
-    layout="wide"  # Menggunakan layout lebar agar grafik lebih jelas
+    layout="wide"
 )
 
 # --- DATABASE FAKTOR EMISI (Konteks Indonesia) ---
@@ -128,14 +128,17 @@ with col2:
     }
     df_vis = pd.DataFrame(data_vis)
     
+    # --- BAGIAN YANG DIPERBAIKI (Tealgrn_r) ---
     fig = px.pie(
         df_vis, 
         values='Emisi', 
         names='Sumber',
         title='Proporsi Penyumbang Emisi Anda',
         hole=0.4,
-        color_discrete_sequence=px.colors.sequential.TealGrn_r
+        color_discrete_sequence=px.colors.sequential.Tealgrn_r
     )
+    # ------------------------------------------
+    
     fig.update_traces(textposition='inside', textinfo='percent+label')
     st.plotly_chart(fig, use_container_width=True)
 
